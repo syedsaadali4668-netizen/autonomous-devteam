@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 export const optimizeCode = async (code: string, language: string) => {
-  // localhost ki jagah seedha 127.0.0.1 use kar rahe hain taake network issue na aaye
-  const response = await axios.post('http://127.0.0.1:8000/api/optimize', {
+  // process.env.NEXT_PUBLIC_API_URL vercel se live link uthayega
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  
+  const response = await axios.post(`${API_URL}/api/optimize`, {
     code,
     language,
   });
