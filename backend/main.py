@@ -3,12 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.routes import router
 import uvicorn
 
-app = FastAPI(title="Autonomous DevTeam API")
+# Yeh line miss ho gayi thi:
+app = FastAPI()
 
+# Ab middleware theek se attach ho jayega:
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-   allow_credentials=False,
+    allow_origins=["*"],  # Vercel samet sab ko allow karega
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
